@@ -12,6 +12,7 @@ namespace Multi_Launcher_V2 {
     public partial class MainForm : Form {
 
         private bool allowVisible = false;
+        private bool initializationNeeded = true;
         private ImageList ImageList = new ImageList();
 
         private List<Category> categories = new List<Category>();
@@ -30,6 +31,12 @@ namespace Multi_Launcher_V2 {
 
             // Hotkey linked to handle, not working if handle change
             HandleCreated += new EventHandler((sender, e) => {
+
+                if (initializationNeeded) {
+                    initializationNeeded = false;
+                    InitializeSettingsAndUI();
+                }
+
                 if (settings == null) return;
                 HotKeyManager.InitializeHotKey(Handle, settings.shortcutModifier, settings.shortcutKey);
             });
@@ -37,10 +44,7 @@ namespace Multi_Launcher_V2 {
             HandleDestroyed += new EventHandler((sender, e) => {
                 HotKeyManager.UnregisterHotKey(Handle);
             });
-
-            InitializeSettingsAndUI();
         }
-
 
 
         #region ****************** UI ******************
@@ -80,6 +84,7 @@ namespace Multi_Launcher_V2 {
 
                 // Get categories + Set image list
                 categories = XmlManager.GetCategories();
+
                 MethodInvoker categoriesDelegate = () => BuildImageList();
                 Invoke(categoriesDelegate);
 
