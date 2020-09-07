@@ -1,10 +1,9 @@
-﻿using AutoUpdaterDotNET;
+﻿//using AutoUpdaterDotNET;
 using Multi_Launcher_V2.Model;
 using Multi_Launcher_V2.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -233,7 +232,7 @@ namespace Multi_Launcher_V2 {
 
 
         private void menuItemUpdate_Click(object sender, EventArgs e) {
-            checkForUpdate(false);
+            //checkForUpdate(false);
         }
 
         private void menuItemChangelog_Click(object sender, EventArgs e) {
@@ -279,19 +278,74 @@ namespace Multi_Launcher_V2 {
 
         #region ****************** UPDATE ******************
 
-        private void checkForUpdate(bool startup) {
-            if (!startup) // Bouton 
-            {
-                AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
-                AutoUpdater.IgnoreSkip = true;
-            }
-            AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("fr-FR");
-            AutoUpdater.ShowRemindLaterButton = true;
-            AutoUpdater.ShowSkipButton = true;
-            AutoUpdater.LetUserSelectRemindLater = true;
-            AutoUpdater.OpenDownloadPage = false;
-            AutoUpdater.Start("http://82.238.255.220/AutoUpdate.xml");
-        }
+        //private void checkForUpdate(bool startup) {
+        //    if (!startup) // Bouton 
+        //    {
+        //        AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
+        //        AutoUpdater.IgnoreSkip = true;
+        //    }
+        //    AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("fr-FR");
+        //    AutoUpdater.ShowRemindLaterButton = true;
+        //    AutoUpdater.ShowSkipButton = true;
+        //    AutoUpdater.LetUserSelectRemindLater = true;
+        //    AutoUpdater.OpenDownloadPage = false;
+        //    AutoUpdater.Start("http://82.238.255.220/AutoUpdate.xml");
+        //}
+
+        //private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args) {
+        //    if (args != null) {
+        //        if (args.IsUpdateAvailable) {
+        //            DialogResult dialogResult;
+        //            if (args.Mandatory) {
+        //                dialogResult =
+        //                    MessageBox.Show(
+        //                        $@"Multi-Launcher version {args.CurrentVersion} est désormais disponible.{Environment.NewLine}" +
+        //                        $@"(Vous disposez de la version {args.InstalledVersion}){Environment.NewLine}" +
+        //                        $@"Il s'agit d'une mise à jour obligatoire, vous ne pouvez continuer sans.{Environment.NewLine}" +
+        //                        $@"Appuyer sur OK pour démarrer le téléchargement", "Mise à Jour disponible",
+        //                        MessageBoxButtons.OKCancel,
+        //                        MessageBoxIcon.Information);
+        //            }
+        //            else {
+        //                dialogResult =
+        //                    MessageBox.Show(
+        //                        $@"Multi-Launcher version {args.CurrentVersion} est désormais disponible.{Environment.NewLine}" +
+        //                        $@"(Vous disposez de la version {args.InstalledVersion}){Environment.NewLine}" +
+        //                        $@"Mettre à jour l'application maintenant ?", "Mise à Jour disponible",
+        //                        MessageBoxButtons.YesNo,
+        //                        MessageBoxIcon.Information);
+        //            }
+
+
+
+        //            if (dialogResult.Equals(DialogResult.Yes)) {
+        //                try {
+        //                    if (AutoUpdater.DownloadUpdate()) {
+        //                        Application.Exit();
+        //                    }
+        //                }
+        //                catch (Exception exception) {
+        //                    MessageBox.Show(exception.Message, exception.GetType().ToString(), MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //                }
+        //            }
+        //            else if (dialogResult.Equals(DialogResult.Cancel)) {
+        //                Environment.Exit(0);
+        //            }
+        //        }
+        //        else {
+        //            MessageBox.Show(@"Aucune mise à jour disponible, vous disposez de la dernière version en ligne.", @"Aucune mise à jour",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //    }
+        //    else {
+        //        MessageBox.Show(
+        //                @"Impossible d'obtenir les informations de mise à jour, veuillez vérifier votre connexion ou le statut du serveur.",
+        //                @"Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+
+        //    AutoUpdater.CheckForUpdateEvent -= AutoUpdaterOnCheckForUpdateEvent;
+        //}
 
         #endregion
 
@@ -369,61 +423,6 @@ namespace Multi_Launcher_V2 {
 
         private void EraseHelp(object sender, EventArgs e) {
             labelInfo.Text = "";
-        }
-
-        private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args) {
-            if (args != null) {
-                if (args.IsUpdateAvailable) {
-                    DialogResult dialogResult;
-                    if (args.Mandatory) {
-                        dialogResult =
-                            MessageBox.Show(
-                                $@"Multi-Launcher version {args.CurrentVersion} est désormais disponible.{Environment.NewLine}" +
-                                $@"(Vous disposez de la version {args.InstalledVersion}){Environment.NewLine}" +
-                                $@"Il s'agit d'une mise à jour obligatoire, vous ne pouvez continuer sans.{Environment.NewLine}" +
-                                $@"Appuyer sur OK pour démarrer le téléchargement", "Mise à Jour disponible",
-                                MessageBoxButtons.OKCancel,
-                                MessageBoxIcon.Information);
-                    }
-                    else {
-                        dialogResult =
-                            MessageBox.Show(
-                                $@"Multi-Launcher version {args.CurrentVersion} est désormais disponible.{Environment.NewLine}" +
-                                $@"(Vous disposez de la version {args.InstalledVersion}){Environment.NewLine}" +
-                                $@"Mettre à jour l'application maintenant ?", "Mise à Jour disponible",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Information);
-                    }
-
-
-
-                    if (dialogResult.Equals(DialogResult.Yes)) {
-                        try {
-                            if (AutoUpdater.DownloadUpdate()) {
-                                Application.Exit();
-                            }
-                        }
-                        catch (Exception exception) {
-                            MessageBox.Show(exception.Message, exception.GetType().ToString(), MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                        }
-                    }
-                    else if (dialogResult.Equals(DialogResult.Cancel)) {
-                        Environment.Exit(0);
-                    }
-                }
-                else {
-                    MessageBox.Show(@"Aucune mise à jour disponible, vous disposez de la dernière version en ligne.", @"Aucune mise à jour",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else {
-                MessageBox.Show(
-                        @"Impossible d'obtenir les informations de mise à jour, veuillez vérifier votre connexion ou le statut du serveur.",
-                        @"Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            AutoUpdater.CheckForUpdateEvent -= AutoUpdaterOnCheckForUpdateEvent;
         }
 
         private void quit(object sender, EventArgs e) {

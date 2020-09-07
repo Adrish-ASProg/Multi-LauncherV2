@@ -120,7 +120,6 @@
             this.listViewItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnItemName});
             this.listViewItems.Cursor = System.Windows.Forms.Cursors.Default;
-            this.listViewItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewItems.HideSelection = false;
             this.listViewItems.Location = new System.Drawing.Point(340, 24);
             this.listViewItems.MultiSelect = false;
@@ -148,7 +147,6 @@
             this.listViewCategories.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumnName});
             this.listViewCategories.Cursor = System.Windows.Forms.Cursors.Default;
-            this.listViewCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewCategories.HideSelection = false;
             this.listViewCategories.Location = new System.Drawing.Point(28, 24);
             this.listViewCategories.MultiSelect = false;
