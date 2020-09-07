@@ -20,6 +20,8 @@ namespace Multi_Launcher_V2 {
                 return;
             }
 
+            FileManager.CreateResourcesFile();
+
             Application.Run(new MainForm());
         }
 

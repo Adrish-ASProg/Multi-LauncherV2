@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using IWshRuntimeLibrary;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Resources;
@@ -11,14 +10,26 @@ using System.Collections.Generic;
 namespace Multi_Launcher_V2 {
     class FileManager {
 
+        private static string RESOURCES_FILE_NAME = "resources.resx";
+
+        public static void CreateResourcesFile() {
+            if (File.Exists(RESOURCES_FILE_NAME)) return;
+
+            using (var writer = new ResXResourceWriter(RESOURCES_FILE_NAME)) {
+                writer.Generate();
+            }
+        }
+
         public static void CreateApplicationShortcut(string destPath) {
             FileInfo f = new FileInfo(Application.ExecutablePath);
 
-            if (System.IO.File.Exists(destPath))
-                System.IO.File.Delete(destPath);
+            if (File.Exists(destPath))
+                File.Delete(destPath);
 
-            WshShell shell = new WshShell();
-            IWshShortcut shortcut = (IWshShortcut) shell.CreateShortcut(destPath);
+            var shell = new IWshRuntimeLibrary.WshShell();
+            var shortcut = (IWshRuntimeLibrary.IWshShortcut)
+                shell.CreateShortcut(destPath);
+
             shortcut.TargetPath = Application.ExecutablePath.ToString();
             shortcut.WorkingDirectory = f.DirectoryName;
             shortcut.Save();
@@ -35,8 +46,8 @@ namespace Multi_Launcher_V2 {
         }
 
         public static void RemoveResource(string resEntryKey) {
-            using (ResXResourceReader reader = new ResXResourceReader("resources.resx")) {
-                using (ResXResourceWriter writer = new ResXResourceWriter("resources.resx")) {
+            using (ResXResourceReader reader = new ResXResourceReader(RESOURCES_FILE_NAME)) {
+                using (ResXResourceWriter writer = new ResXResourceWriter(RESOURCES_FILE_NAME)) {
                     IDictionaryEnumerator de = reader.GetEnumerator();
                     while (de.MoveNext()) {
                         if (!de.Entry.Key.ToString().Equals(resEntryKey, StringComparison.InvariantCultureIgnoreCase)) {
@@ -51,8 +62,8 @@ namespace Multi_Launcher_V2 {
 
         public static bool AddImageToResources(string name, Image img) {
             try {
-                var reader = new ResXResourceReader("resources.resx");
-                var writer = new ResXResourceWriter("resources.resx");
+                var reader = new ResXResourceReader(RESOURCES_FILE_NAME);
+                var writer = new ResXResourceWriter(RESOURCES_FILE_NAME);
                 var node = reader.GetEnumerator();
 
                 var nodeKeys = new List<String>();
@@ -77,7 +88,7 @@ namespace Multi_Launcher_V2 {
         }
 
         public static Bitmap GetImgFromResource(string name) {
-            ResXResourceReader resReader = new ResXResourceReader("resources.resx");
+            ResXResourceReader resReader = new ResXResourceReader(RESOURCES_FILE_NAME);
 
             foreach (DictionaryEntry d in resReader) {
                 if (d.Key.ToString().Equals(name)) {
