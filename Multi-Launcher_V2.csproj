@@ -53,9 +53,8 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoUpdater.NET, Version=1.4.3.0, Culture=neutral, PublicKeyToken=942f95247e354701, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Adri\Desktop\AutoUpdater.NET-master\AutoUpdater.NET\bin\Debug\v4.0\AutoUpdater.NET.dll</HintPath>
+    <Reference Include="AutoUpdater.NET, Version=1.6.2.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autoupdater.NET.Official.1.6.2\lib\net45\AutoUpdater.NET.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MouseKeyboardActivityMonitor">
@@ -67,6 +66,8 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -131,6 +132,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\UpdateManager.cs" />
     <Compile Include="Utils\XmlManager.cs" />
     <EmbeddedResource Include="Components\ItemComponent.resx">
       <DependentUpon>ItemComponent.cs</DependentUpon>
@@ -158,6 +160,8 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Include="CHANGELOG.md" />
+    <None Include="generate_changelog.sh" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -184,6 +188,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AutoUpdater.xml" />
     <Content Include="icon.ico" />
     <None Include="Resources\changelog.png" />
     <None Include="Resources\update.png" />
