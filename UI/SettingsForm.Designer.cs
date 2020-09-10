@@ -382,7 +382,7 @@
     " les programmes démarrent toujours après un double clic.";
             this.radioDoubleClic.Text = "Double clic";
             this.radioDoubleClic.UseVisualStyleBackColor = true;
-            this.radioDoubleClic.CheckedChanged += new System.EventHandler(this.onChange);
+            this.radioDoubleClic.CheckedChanged += new System.EventHandler(this.onUISettingsChange);
             this.radioDoubleClic.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.helpRequested);
             this.radioDoubleClic.MouseEnter += new System.EventHandler(this.ShowHelpOnHover);
             this.radioDoubleClic.MouseLeave += new System.EventHandler(this.EraseHelp);
@@ -400,7 +400,7 @@
     " les programmes démarrent toujours après un double clic.";
             this.radioSimpleClic.Text = "Simple clic";
             this.radioSimpleClic.UseVisualStyleBackColor = true;
-            this.radioSimpleClic.CheckedChanged += new System.EventHandler(this.onChange);
+            this.radioSimpleClic.CheckedChanged += new System.EventHandler(this.onUISettingsChange);
             this.radioSimpleClic.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.helpRequested);
             this.radioSimpleClic.MouseEnter += new System.EventHandler(this.ShowHelpOnHover);
             this.radioSimpleClic.MouseLeave += new System.EventHandler(this.EraseHelp);

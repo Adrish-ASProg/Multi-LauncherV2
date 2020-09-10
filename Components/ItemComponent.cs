@@ -1,6 +1,7 @@
 ﻿using Multi_Launcher_V2.Model;
 using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Multi_Launcher_V2 {
@@ -35,7 +36,17 @@ namespace Multi_Launcher_V2 {
         }
 
         public void setOnPictureClicked(Action<Item> eventHandler) {
-            pictureItem.Click += (s, e) => eventHandler.Invoke(item);
+            if (settings.doubleClick)
+                pictureItem.MouseDoubleClick += (s, e) => {
+                    if (e.Button == MouseButtons.Left)
+                        eventHandler.Invoke(item);
+                };
+
+            else
+                pictureItem.MouseClick += (s, e) => {
+                    if (e.Button == MouseButtons.Left)
+                        eventHandler.Invoke(item);
+                };
         }
 
         public void setOnMouseEnter(EventHandler eventHandler) {
