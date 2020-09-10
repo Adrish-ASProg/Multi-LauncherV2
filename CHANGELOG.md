@@ -3,6 +3,8 @@ Multi-Launcher V2 - Changelog
 
 
 ## [v0.5.1](https://github.com/Adrish-ASProg/Multi-LauncherV2/releases/tag/v0.5.1)
+ - chore: update autoupdater configuration ([_2020-09-10_](https://github.com/Adrish-ASProg/Multi-LauncherV2/commit/2c9213935580e008c39b7ee8f03cc383de46c246))
+ - Create CHANGELOG.md ([_2020-09-10_](https://github.com/Adrish-ASProg/Multi-LauncherV2/commit/4d436f5ee901d1ca41c1652b7ff47beb9516b8b5))
  - feat: add changelog generator ([_2020-09-10_](https://github.com/Adrish-ASProg/Multi-LauncherV2/commit/9a586adcf066533acfdad565c076ecbce3ef6cb0))
  - feat: initialize update system ([_2020-09-10_](https://github.com/Adrish-ASProg/Multi-LauncherV2/commit/5f65bc210eaf553ea4ecc571736ada9cbc13fa1d))
  - debug: enrich resetted settings / categories ([_2020-09-10_](https://github.com/Adrish-ASProg/Multi-LauncherV2/commit/8241999b33ca1f642b358294a9df2c84a6bcbfe4))
