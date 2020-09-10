@@ -9,7 +9,7 @@ namespace Multi_Launcher_V2.Model
         public Item() { }
 
         [XmlAttribute]
-        public short Id { get; set; }
+        public int Id { get; set; }
 
         [XmlAttribute]
         public string Name { get; set; }

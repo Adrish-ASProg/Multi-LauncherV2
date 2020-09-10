@@ -18,9 +18,43 @@ namespace Multi_Launcher_V2.Utils {
             }
         }
 
-
         public static void ResetSettings() {
-            SaveToFile(new XmlModel());
+            var model = new XmlModel();
+            model.Categories = buildSampleCategories();
+
+            SaveToFile(model);
+        }
+
+        private static List<Category> buildSampleCategories() {
+            var categories = new List<Category>();
+
+            var itemsDictionary = new Dictionary<string, List<string>> {
+                { "Jeux", new List<string> { "FIFA 20", "RDR2" } },
+                { "Programmation", new List<string> { "IntelliJ", "Visual Studio" } },
+                { "Entretien PC", new List<string> { "CPU-Z", "MSI Afterburner" } },
+                { "Autre", new List<string>() }
+            };
+
+            foreach (KeyValuePair<string, List<string>> entry in itemsDictionary) {
+
+                var category = new Category();
+                category.Id = 0;
+                category.Name = entry.Key;
+
+                for (int i = 0; i < entry.Value.Count; i++) {
+
+                    var item = new Item();
+                    item.Id = i;
+                    item.Name = entry.Value[i];
+                    item.Target = "";
+                    item.Category = category;
+                    category.Items.Add(item);
+                }
+
+                categories.Add(category);
+            }
+
+            return categories;
         }
 
         public static Settings GetSettings() {
