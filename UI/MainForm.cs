@@ -232,7 +232,13 @@ namespace Multi_Launcher_V2 {
         }
 
         private void menuItemExtract_Click(object sender, EventArgs e) {
-            CmdManager.ExecuteCommand("tls\\ResourcesExtract\\ResourcesExtract.exe");
+            try {
+                CmdManager.ExecuteCommand("tls\\ResourcesExtract\\ResourcesExtract.exe");
+            }
+            catch (Exception ex) {
+                MessageBox.Show($"Impossible de démarrer le programme: {ex.Message}", "Erreur",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
