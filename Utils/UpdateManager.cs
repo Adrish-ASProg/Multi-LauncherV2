@@ -1,6 +1,7 @@
 ﻿using AutoUpdaterDotNET;
 
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Multi_Launcher_V2.Utils {
@@ -10,10 +11,14 @@ namespace Multi_Launcher_V2.Utils {
         public static void CheckForUpdate(bool startup) {
             if (!startup) {
                 AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
-                //AutoUpdater.IgnoreSkip = true;
             }
 
-            //AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("fr-FR");
+            var currentDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+            if (currentDirectory != null) {
+                //AutoUpdater.InstallationPath = currentDirectory.Parent.FullName;
+                AutoUpdater.InstallationPath = currentDirectory.FullName;
+            }
+
             AutoUpdater.ShowRemindLaterButton = true;
             AutoUpdater.ShowSkipButton = true;
             AutoUpdater.LetUserSelectRemindLater = true;

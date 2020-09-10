@@ -2,8 +2,8 @@
 <item>
 	<version>0.5.1.0</version>
 	<url>
-		https://github.com/Adrish-ASProg/Multi-LauncherV2/releases/latest/download/Multi-LauncherV2-0.5.1.rar
+		https://github.com/Adrish-ASProg/Multi-LauncherV2/releases/latest/download/Multi-LauncherV2.zip
 	</url>
-	<!--<changelog>https://github.com/Adrish-ASProg/Multi-LauncherV2/CHANGELOG.md</changelog>-->
+	<changelog>https://github.com/Adrish-ASProg/Multi-LauncherV2/blob/master/CHANGELOG.md</changelog>
 	<mandatory>false</mandatory>
 </item>
