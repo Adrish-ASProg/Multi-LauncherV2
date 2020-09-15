@@ -42,6 +42,9 @@ namespace Multi_Launcher_V2 {
             radioDoubleClic.Checked = settings.doubleClick;
             radioButtonViewDetails.Checked = settings.detailsView;
 
+            groupBoxLaunch.Enabled = !settings.detailsView;
+            groupBoxImages.Enabled = !settings.detailsView;
+
             buttonApply.Enabled = false;
             shouldReloadUI = false;
         }
@@ -55,6 +58,13 @@ namespace Multi_Launcher_V2 {
 
         void buttonApply_Click(object sender, EventArgs e) {
             applyChanges();
+        }
+
+        private void onViewModeChanged(object sender, EventArgs e) {
+            groupBoxLaunch.Enabled = radioButtonViewGrid.Checked;
+            groupBoxImages.Enabled = radioButtonViewGrid.Checked;
+
+            onUISettingsChange(sender, e);
         }
 
         private void onUISettingsChange(object sender, EventArgs e) {
