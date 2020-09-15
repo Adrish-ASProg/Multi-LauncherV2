@@ -54,8 +54,8 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tabContainer = new System.Windows.Forms.TabControl();
             this.objectListView = new BrightIdeasSoftware.ObjectListView();
-            this.olvColumnImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnImage = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnCategory = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnTarget = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menu.SuspendLayout();
@@ -90,7 +90,7 @@
             // 
             // menuItemAdd
             // 
-            this.menuItemAdd.Image = global::Multi_Launcher_V2.Properties.Resources.plus;
+            this.menuItemAdd.Image = ((System.Drawing.Image)(resources.GetObject("menuItemAdd.Image")));
             this.menuItemAdd.Name = "menuItemAdd";
             this.menuItemAdd.Size = new System.Drawing.Size(202, 22);
             this.menuItemAdd.Text = "Ajouter un programme";
@@ -98,7 +98,7 @@
             // 
             // menuItemEdit
             // 
-            this.menuItemEdit.Image = global::Multi_Launcher_V2.Properties.Resources.edit;
+            this.menuItemEdit.Image = ((System.Drawing.Image)(resources.GetObject("menuItemEdit.Image")));
             this.menuItemEdit.Name = "menuItemEdit";
             this.menuItemEdit.Size = new System.Drawing.Size(202, 22);
             this.menuItemEdit.Tag = "Vous permet de modifier les catégories et les programmes: Noms, images, ordre..";
@@ -170,7 +170,7 @@
             // 
             // menuItemUpdate
             // 
-            this.menuItemUpdate.Image = global::Multi_Launcher_V2.Properties.Resources.update;
+            this.menuItemUpdate.Image = global::Multi_Launcher_V2.Properties.Resources.upgrade;
             this.menuItemUpdate.Name = "menuItemUpdate";
             this.menuItemUpdate.Size = new System.Drawing.Size(193, 22);
             this.menuItemUpdate.Text = "Vérifier les mises à jour";
@@ -305,18 +305,17 @@
             this.objectListView.View = System.Windows.Forms.View.Details;
             this.objectListView.Visible = false;
             // 
-            // olvColumnImage
-            // 
-            this.olvColumnImage.DisplayIndex = 0;
-            this.olvColumnImage.ImageAspectName = "Image";
-            this.olvColumnImage.Text = "Image";
-            this.olvColumnImage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // olvColumnName
             // 
             this.olvColumnName.AspectName = "Name";
             this.olvColumnName.Text = "Nom";
             this.olvColumnName.Width = 90;
+            // 
+            // olvColumnImage
+            // 
+            this.olvColumnImage.ImageAspectName = "Image";
+            this.olvColumnImage.Text = "Image";
+            this.olvColumnImage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // olvColumnCategory
             // 

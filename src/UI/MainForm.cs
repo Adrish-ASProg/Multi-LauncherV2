@@ -195,10 +195,12 @@ namespace Multi_Launcher_V2 {
 
         private void menuItemAdd_Click(object sender, EventArgs e) {
             Item item = ItemForm.ShowAddItemDialog(this, categories, 0);
+
             if (item != null) {
                 if (item.Image != null && item.ImageId != null
                     && !ImageList.Images.ContainsKey(item.ImageId))
                     ImageList.Images.Add(item.ImageId, item.Image);
+
                 SetupUIAsync();
             }
         }
