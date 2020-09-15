@@ -18,14 +18,11 @@ namespace Multi_Launcher_V2 {
         private List<Category> categories = new List<Category>();
         private Settings settings;
 
-        string build;
-
         private void test() { }
 
         public MainForm() {
             InitializeComponent();
 
-            // build = typeof(MainForm).Assembly.GetName().Version + " (07/11)";
             // checkForUpdate(true);
 
 
@@ -247,22 +244,19 @@ namespace Multi_Launcher_V2 {
         }
 
         private void menuItemChangelog_Click(object sender, EventArgs e) {
-            string changelog =
-                $"Version {typeof(MainForm).Assembly.GetName().Version}:{Environment.NewLine}" +
-                "• Remplacement des flèches par du Drag & Drop (Ordre d'affichage)\n" +
-                "• Possibilité de trier les éléments par Nom\n" +
-                "• Modifications des éléments simplifiée\n" +
-                "• Possibilité d'afficher les nouveautés\n" +
-                "• Ajout d'un système de mise à jour\n" +
-                "• Corrections de bugs";
+            var message = "Vous pouvez consulter les dernières mises à jour directement sur GitHub en cliquant sur le bouton 'Aide'";
+            var changelogUrl = "https://github.com/Adrish-ASProg/Multi-LauncherV2/blob/master/CHANGELOG.md";
 
-            MessageBox.Show(changelog, $"Notes de Mise à Jour", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(message, $"Notes de Mise à Jour", MessageBoxButtons.OK, MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1, 0, changelogUrl);
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e) {
-            string title = "À Propos";
-            string message = "Multi-Launcher V2 - Build " + build + "\n" +
-                             "© 2020 ASProg - All Rights Reserved";
+
+            var appVersion = typeof(MainForm).Assembly.GetName().Version;
+            var title = "À Propos";
+            var message = $"Multi-Launcher V2 - v{appVersion} \n© 2020 ASProg - All Rights Reserved";
+
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
