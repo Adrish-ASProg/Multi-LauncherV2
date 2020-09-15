@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Model\XmlModel.cs" />
+    <Compile Include="src\Utils\Constants.cs" />
     <Compile Include="src\Utils\HotKeyManager.cs" />
     <Compile Include="src\Utils\CmdManager.cs" />
     <Compile Include="src\Components\ItemComponent.cs">

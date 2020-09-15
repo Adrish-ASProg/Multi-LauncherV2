@@ -1,5 +1,6 @@
 ﻿//using AutoUpdaterDotNET;
 using Multi_Launcher_V2.Model;
+using Multi_Launcher_V2.src.Utils;
 using Multi_Launcher_V2.Utils;
 using System;
 using System.Collections.Generic;
@@ -240,15 +241,14 @@ namespace Multi_Launcher_V2 {
 
 
         private void menuItemUpdate_Click(object sender, EventArgs e) {
-            UpdateManager.CheckForUpdate(false);
+            UpdateManager.CheckForUpdate();
         }
 
         private void menuItemChangelog_Click(object sender, EventArgs e) {
             var message = "Vous pouvez consulter les dernières mises à jour directement sur GitHub en cliquant sur le bouton 'Aide'";
-            var changelogUrl = "https://github.com/Adrish-ASProg/Multi-LauncherV2/blob/master/CHANGELOG.md";
 
             MessageBox.Show(message, $"Notes de Mise à Jour", MessageBoxButtons.OK, MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1, 0, changelogUrl);
+                MessageBoxDefaultButton.Button1, 0, Constants.REPOSITORY_URL);
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e) {

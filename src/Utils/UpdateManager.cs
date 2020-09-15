@@ -1,5 +1,5 @@
 ﻿using AutoUpdaterDotNET;
-
+using Multi_Launcher_V2.src.Utils;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -7,15 +7,12 @@ using System.Windows.Forms;
 namespace Multi_Launcher_V2.Utils {
     class UpdateManager {
 
-
-        public static void CheckForUpdate(bool startup) {
-            if (!startup) {
-                AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
-            }
+        public static void CheckForUpdate() {
+            AutoUpdater.CheckForUpdateEvent -= AutoUpdaterOnCheckForUpdateEvent;
+            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
 
             var currentDirectory = new DirectoryInfo(Environment.CurrentDirectory);
             if (currentDirectory != null) {
-                //AutoUpdater.InstallationPath = currentDirectory.Parent.FullName;
                 AutoUpdater.InstallationPath = currentDirectory.FullName;
             }
 
@@ -24,7 +21,7 @@ namespace Multi_Launcher_V2.Utils {
             AutoUpdater.LetUserSelectRemindLater = true;
             AutoUpdater.OpenDownloadPage = false;
             AutoUpdater.ReportErrors = true;
-            AutoUpdater.Start("https://raw.githubusercontent.com/Adrish-ASProg/Multi-LauncherV2/master/AutoUpdater.xml");
+            AutoUpdater.Start(Constants.AUTO_UPDATER_CONFIG_URL);
         }
 
 
